@@ -19,9 +19,13 @@ const Card = ({image, copyright, date, explanation, title}) => {
 
   return (
     <div className='card' onClick={handleClick}>
-      <img className='image' src={image} />
+      <img className='image' src={image} alt={title} />
       <div className='description'>
-        <div className='text'>This is my description</div>
+        <div className='text'>
+          <h1>{title}</h1>
+          <h2>{copyright}</h2>
+          <p className='explanation'>{explanation}</p>
+        </div>
         <div>{liked ? 'Liked' : 'Not Liked'}</div>
 
       </div>
