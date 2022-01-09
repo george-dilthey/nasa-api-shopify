@@ -9,9 +9,11 @@ const Container = () => {
           .then((data) => console.log(data));
   }
 
+  const nasaApi = process.env.REACT_APP_NASA_API
+
   useEffect(() => {
     //getData();
-    console.log(process.env.NASA_API)
+    console.log(nasaApi)
     }, []);
 
   return (
