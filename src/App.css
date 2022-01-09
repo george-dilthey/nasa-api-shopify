@@ -1,38 +1,61 @@
-.App {
+
+.loading {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(0,0,0,.2 );
+  border-radius: 50%;
+  border-top-color: rgba(0,0,0,.4 );
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  left: calc(50%);
+  top: calc(50%);
+  position: fixed;
+  z-index: 1;
+  transition: 5s ease-out
+}
+
+.card{
+  position: relative;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+}
+
+.description {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text {
+  color: black;
+  font-size: 16px;
+  padding: 16px 32px;
+  z-index: 999;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card:hover .image {
+  opacity: 0.1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card:hover .description {
+  opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
 }
