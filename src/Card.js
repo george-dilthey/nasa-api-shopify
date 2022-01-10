@@ -14,13 +14,14 @@ const Card = ({image, copyright, date, explanation, title}) => {
 
   return (
     <div className='card' >
-      <img className='image' src={image} alt={title} />
+      <img className='image' src={image} alt={title} onError={(event) => event.target.parentElement.style.display = 'none'} />
       <div className='description'>
         <div className='text'>
           <h1>{title}</h1>
           <h2>{copyright}</h2>
           <p className='explanation'>{explanation}</p>
-          <div className='like-button'>
+        </div>
+        <div className='like-button'>
             <Button 
               variant={liked ? "contained" : "outlined" }
               startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
@@ -30,7 +31,6 @@ const Card = ({image, copyright, date, explanation, title}) => {
               {liked ? 'Liked' : 'Like'}
             </Button>
           </div>
-        </div>
       </div>
     </div>
   )

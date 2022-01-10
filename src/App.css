@@ -26,6 +26,7 @@ p {
 
 .card{
   position: relative;
+  height: auto;
 }
 
 .image {
@@ -50,16 +51,11 @@ p {
   text-align: center;
 }
 
-.explanation {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 .text {
   color: black;
-  height: 100%;
+  max-height: 75%;
+  overflow: auto;
+  margin-bottom: 10px;
 }
 
 .card:hover .image {
