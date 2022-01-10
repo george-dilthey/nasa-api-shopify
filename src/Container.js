@@ -13,11 +13,9 @@ const Container = () => {
   const [apiData, setApiData] = useState([])
   
   const getData = () => {
-    console.log('getting data...')
     return fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log('got data', data)
         setApiData(c => [...c, ...data])
         setLoading(false)
       });
