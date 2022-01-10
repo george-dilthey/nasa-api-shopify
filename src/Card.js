@@ -1,5 +1,4 @@
 import './App.css';
-import { useEffect } from 'react';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -13,14 +12,8 @@ const Card = ({image, copyright, date, explanation, title}) => {
     setLiked(!liked)
   }
 
-
-
-  useEffect(() => {
-
-    }, []);
-
   return (
-    <div className='card' onClick={handleClick}>
+    <div className='card' >
       <img className='image' src={image} alt={title} />
       <div className='description'>
         <div className='text'>
@@ -32,13 +25,12 @@ const Card = ({image, copyright, date, explanation, title}) => {
               variant={liked ? "contained" : "outlined" }
               startIcon={liked ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
               color = "error"
+              onClick={handleClick}
             >
               {liked ? 'Liked' : 'Like'}
             </Button>
           </div>
         </div>
-        
-
       </div>
     </div>
   )

@@ -8,27 +8,27 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 const Container = () => {
   
   const apiKey = process.env.REACT_APP_NASA_API
+  const url = `https://api.nasa.gov/planetary/apod?count=25&api_key=${apiKey}`
+  const [loading, setLoading] = useState(true)
+  const [apiData, setApiData] = useState([])
   
   const getData = () => {
     console.log('getting data...')
-    return fetch(`https://api.nasa.gov/planetary/apod?count=25&api_key=${apiKey}`)
-          .then((response) => response.json())
-          .then((data) => {
-            console.log('got data', data)
-            setApiData(c => [...c, ...data])
-            setLoading(false)
-          });
+    return fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('got data', data)
+        setApiData(c => [...c, ...data])
+        setLoading(false)
+      });
   }
 
   const loadMore = () => {
-    if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.scrollingElement.scrollHeight) {
-        getData()
+    const doc = document.documentElement
+    if (doc.scrollTop + doc.clientHeight +1 >= doc.scrollHeight) {
+      getData()
     }
   } 
-
-  const [loading, setLoading] = useState(true)
-  const [apiData, setApiData] = useState([])
-
 
   useEffect(() => {
     window.addEventListener('scroll', loadMore)
@@ -52,6 +52,7 @@ const Container = () => {
           )}
         </Masonry>
       </ResponsiveMasonry>
+      {loading ? null : <div className="loading" style={{position: "relative", marginTop: "5em", marginBottom: "5em"}}></div>}
     </div>
   )
 }
