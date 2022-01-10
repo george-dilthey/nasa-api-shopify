@@ -20,6 +20,7 @@ const Card = ({image, copyright, date, explanation, title}) => {
           <h1>{title}</h1>
           <h2>{copyright}</h2>
           <p className='explanation'>{explanation}</p>
+          <p>Captured on {date}</p>
         </div>
         <div className='like-button'>
             <Button 
