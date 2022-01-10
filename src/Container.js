@@ -14,19 +14,26 @@ const Container = () => {
     return fetch(`https://api.nasa.gov/planetary/apod?count=25&api_key=${apiKey}`)
           .then((response) => response.json())
           .then((data) => {
-            console.log('got data')
-            setApiData(data)
+            console.log('got data', data)
+            setApiData(c => [...c, ...data])
             setLoading(false)
           });
   }
+
+  const loadMore = () => {
+    if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.scrollingElement.scrollHeight) {
+        getData()
+    }
+  } 
 
   const [loading, setLoading] = useState(true)
   const [apiData, setApiData] = useState([])
 
 
   useEffect(() => {
+    window.addEventListener('scroll', loadMore)
     getData();
-    }, []);
+  }, []);
 
   return (
     <div>
